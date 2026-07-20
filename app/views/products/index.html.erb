@@ -1,0 +1,12 @@
+<h1>Products#index</h1>
+<%# debug @products %>
+
+<%= link_to "Добавить новый продукт", new_product_path %>
+
+<ul>
+    <% @products.each do |product| %>
+        <li>
+            <%= link_to product.name, product %>
+        </li>
+    <% end %>
+</ul>
