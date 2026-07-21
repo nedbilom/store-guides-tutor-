@@ -3,6 +3,8 @@
 
 <%= link_to "Добавить новый продукт", new_product_path if authenticated? %>
 
+<h1><%= t ".title" %></h1>
+
 <ul>
     <% @products.each do |product| %>
         <li>
