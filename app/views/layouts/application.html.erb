@@ -24,6 +24,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav>
+      <%= link_to "Главная страница", root_path %>
+      <%= button_to "Выйти", session_path, method: :delete if authenticated? %>
+      <%= link_to "Войти", new_session_path unless authenticated? %>
+    </nav>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

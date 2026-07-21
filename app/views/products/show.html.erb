@@ -1,5 +1,8 @@
 <h2>Страница товара <%= @product.name %></h2>
 
-<%= link_to "Редактирование", edit_product_path %>
-<%= button_to "Удалить", @product, method: :delete, data: { turbo_confirm: "Удаляем?" } %>
 <%= link_to "Назад в будущее", products_path %>
+
+<% if authenticated? %>
+    <%= link_to "Редактирование", edit_product_path %>
+    <%= button_to "Удалить", @product, method: :delete, data: { turbo_confirm: "Удаляем?" } %>
+<% end %>

@@ -1,7 +1,7 @@
 <h1>Products#index</h1>
 <%# debug @products %>
 
-<%= link_to "Добавить новый продукт", new_product_path %>
+<%= link_to "Добавить новый продукт", new_product_path if authenticated? %>
 
 <ul>
     <% @products.each do |product| %>
