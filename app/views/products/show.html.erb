@@ -1,5 +1,7 @@
 <% cache @product do %>
     <h2>Страница товара <%= @product.name %></h2>
+
+    <%= @product.description %>
 <% end %>
 
 <%= link_to "Назад в будущее", products_path %>
