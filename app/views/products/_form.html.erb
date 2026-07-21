@@ -18,6 +18,16 @@
     <%= form.file_field :featured_image, accept: "image/*" %>
   </div>
 
+    <div>
+    <%= form.label :inventory_count, style: "display: block" %>
+    <%= form.number_field :inventory_count %>
+  </div>
+
+    <div>
+    <%= form.label :limited_count, style: "display: block" %>
+    <%= form.number_field :limited_count %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>
