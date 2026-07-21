@@ -1,0 +1,10 @@
+<h2>Редактирование продукта <%= @product.name %>
+
+<%= render "form", product: @product %>
+
+<%# link_to "Отмена", product_path(@product.id) %>
+
+Одинаковое действие:
+<%= link_to "Отмена", product_path(@product) %>
+<%= link_to "Отмена", product_path(@product.id) %>
+<%= link_to "Отмена", product_path %>

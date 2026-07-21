@@ -33,5 +33,5 @@ Rails.application.routes.draw do
   # 
 
   root "products#index"
-  get "/products/:title", to: "products#show"
+  # get "/products/:title", to: "products#show"
 end
