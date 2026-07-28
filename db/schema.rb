@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_27_082653) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_28_081636) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -49,6 +49,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_27_082653) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "platform_holders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "description"
+    t.string "name"
+    t.integer "product_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_platform_holders_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "inventory_count", default: 0
@@ -84,6 +93,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_27_082653) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "platform_holders", "products"
   add_foreign_key "sessions", "users"
   add_foreign_key "subscribers", "products"
 end
