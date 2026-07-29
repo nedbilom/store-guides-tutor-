@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     resources :subscribers, only: [ :create ]
   end
 
-  resources :platfrom_holders
+  resources :platform_holders
 
   # 
 

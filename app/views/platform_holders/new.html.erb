@@ -1,0 +1,26 @@
+<h2>Добавление нового платформа держателя</h2>
+
+<%= form_with model: @platform_holder do |form| %>
+  <% if form.object.errors.any? %>
+    <p class="error"><%= form.object.errors.full_messages.first %></p>
+  <% end %>
+
+  <div>
+    <%= form.label "Название компании платформадержателя" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label "Описание" %>
+    <%= form.rich_textarea :description %>
+  </div>
+
+    <div>
+        <%= form.label "Продукты" %>
+        <%= form.collection_select(:product_id, @products, :id, :name) %>
+    </div>
+
+  <div>
+    <%= form.submit "Добавить" %>
+  </div>
+<% end %>

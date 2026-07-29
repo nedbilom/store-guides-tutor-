@@ -1,0 +1,7 @@
+<h2>Страница платформы <%= @platform.name %></h2>
+
+<% if @product.present? %>
+    <h5><%= link_to @product.name, @product %></h5>
+<% else %>
+    <h5>У платформы нет консоли</h5>
+<% end %>
