@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_28_081636) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_30_081403) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -53,17 +53,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_28_081636) do
     t.datetime "created_at", null: false
     t.string "description"
     t.string "name"
-    t.integer "product_id", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_platform_holders_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "inventory_count", default: 0
-    t.integer "limited_count"
+    t.integer "limited_count", default: 0
     t.string "name"
+    t.integer "platform_holder_id"
     t.datetime "updated_at", null: false
+    t.index ["platform_holder_id"], name: "index_products_on_platform_holder_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -93,7 +93,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_28_081636) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "platform_holders", "products"
+  add_foreign_key "products", "platform_holders"
   add_foreign_key "sessions", "users"
   add_foreign_key "subscribers", "products"
 end

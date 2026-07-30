@@ -1,7 +1,15 @@
 <h2>Страница платформы <%= @platform.name %></h2>
 
-<% if @product.present? %>
-    <h5><%= link_to @product.name, @product %></h5>
+
+
+<% if @platform.products.present? %>
+    <ul>
+        <% @platform.products.each do |product| %>
+            <li>
+                <%= link_to product.name, product %>
+            </li>
+        <% end %>
+    </ul>
 <% else %>
     <h5>У платформы нет консоли</h5>
 <% end %>

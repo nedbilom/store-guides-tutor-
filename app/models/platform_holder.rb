@@ -1,5 +1,5 @@
 class PlatformHolder < ApplicationRecord
-  belongs_to :product
+  has_many :products
 
   validates :name, presence: true
 end

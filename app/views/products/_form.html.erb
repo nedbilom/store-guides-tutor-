@@ -29,6 +29,12 @@
   </div>
 
   <div>
+    <%= form.label :platform_holder_id, style: "display: block" %>
+    <%# form.collection_select :platform_holder_id, platform_holders, :id, :name, { include_blank: true } %>
+    <%= form.collection_select :platform_holder_id, platform_holders, :id, :name, { prompt: "Выберите платформадержателя..." } %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

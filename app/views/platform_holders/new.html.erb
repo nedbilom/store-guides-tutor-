@@ -17,7 +17,7 @@
 
     <div>
         <%= form.label "Продукты" %>
-        <%= form.collection_select(:product_id, @products, :id, :name) %>
+        <%= form.collection_select(:product_ids, @products, :id, :name, {}, { multiple: true }) %>
     </div>
 
   <div>

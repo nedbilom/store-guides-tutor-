@@ -17,13 +17,36 @@ class PlatformHoldersController < ApplicationController
 
     def show
         @platform = PlatformHolder.find(params[:id]);
-        @product = Product.find(@platform.product_id);
     end
 
     def create
         @platform = PlatformHolder.new(platform_params)
 
         if @platform.save
+            productIds = params[:platform_holder][:product_ids] || []
+            productIds = productIds.reject(&:blank?)
+
+            puts "=== DEBUG ==="
+            puts productIds.inspect
+            puts "============="
+
+            # Альтернатива:
+            # Product.where(id: product_ids).update_all(platform_holder_id: @platform.id)
+
+            productIds.each do |id|
+                product = Product.find(id)
+                
+                puts "=== Обновляю продукт ID: #{id} ==="
+                puts "Текущий platform_holder_id: #{product.platform_holder_id}"
+                
+                if product.update(platform_holder_id: @platform.id)
+                    puts "Успешно обновлено!"
+                else
+                    puts "ОШИБКА ОБНОВЛЕНИЯ!"
+                    puts product.errors.full_messages.inspect
+                end
+            end
+
             redirect_to @platform
         else
             render :new, status: :unprocessable_entity
@@ -33,6 +56,6 @@ class PlatformHoldersController < ApplicationController
     private
 
   def platform_params
-    params.expect(platform_holder: [ :name, :description, :product_id ])
+    params.expect(platform_holder: [ :name, :description ])
   end
 end

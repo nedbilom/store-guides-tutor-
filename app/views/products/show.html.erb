@@ -1,6 +1,10 @@
 <% cache @product do %>
     <h2>Страница товара <%= @product.name %></h2>
 
+    <% if @product.platform_holder.present? %>
+        <p>Платформа-держатель: <%= @product.platform_holder.name %></p>
+    <% end %>
+
     <span><%= @product.inventory_count %> в наличии</span> 
     <span>Количество лимитированных версий: <%= @product.limited_count %> в наличии</span>
 

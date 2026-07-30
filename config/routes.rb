@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
   # 
 
-  root "products#index"
+  # root "products#index"
+  root "application#index"
   # get "/products/:title", to: "products#show"
 end
